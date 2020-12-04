@@ -1,7 +1,17 @@
+const Stack = require('./stack/stack.js');
+const brackets = ['(', ')', '[', ']', '{', '}'];
+const matchingBrackets = {
+    '(':')',
+    '[':']',
+    '{':'}',
+    ')':'(',
+    ']':'[',
+    '}':'{'
+}
+
 function stripInput(input) {
-    const stripped = input.replace(/[\-A-Za-z0-9,"'+*/=.,;:&$!?@#%^<>|_]/g, '')
-    const array = stripped.split('');
-    return array;
+    const stripped = input.match(/[(){}\[\]]/g)
+    return stripped;
 }
 
 const word = stripInput('(te(s)t{}[]=+,')
