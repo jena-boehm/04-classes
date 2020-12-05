@@ -19,15 +19,3 @@ class Stack {
 }
 
 module.exports = { Stack };
-
-
-const newStack = new Stack();
-newStack.push("[");
-console.log(newStack.peek());
-newStack.push("{");
-console.log(newStack.peek());
-newStack.push("]");
-console.log(newStack.peek());
-
-
-

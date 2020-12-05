@@ -1,29 +1,17 @@
 const express = require('express');
 const app = express();
-const { stripInput } = require('./utils.js');
+const { stripInput, linter } = require('./utils.js');
+const { Stack } = require('./stack/stack.js');
 
 app.use(express.json());
 
-app.post('/api/v1/lint', (req, res) => {
-    const onlyBrackets = stripInput(req.body.lint);
-    const stack = newStack();
+app.post('/lint', (req, res) => {
+    const results = linter(req.body.code);
+    // const stack = new Stack();
 
-    res.send(stack);
+    res.send(results);
 
-    // onlyBrackets.forEach(bracket => {
-    //     if(bracket === '{' || '[' || '(') {
-    //         stack.push(bracket);
-    //     } else {
-    //         const top = stack.peek();
-    //         if(top === '{' && bracket === '}') {
-    //             stack.pop();
-    //         } else if(top === '[' && bracket === ']') {
-    //             stack.pop();
-    //         } else stack.push(bracket);
-    //     }
-    // });
-
-    console.log(onlyBrackets, stack);
+    // console.log(onlyBrackets, stack);
 
 });
 
